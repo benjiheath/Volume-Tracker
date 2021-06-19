@@ -3,6 +3,8 @@
 Small project to become more familiar with React. Tracks total volume (reps\*weight) for exercises between workouts for monitoring improvements.
 This is easily done in a spreadsheet but I thought it would be good practice to code it from scratch.
 
+[Demo](https://goofy-shaw-3167b1.netlify.app/)
+
 \***\*todo\*\***
 
 - Fix graph display
