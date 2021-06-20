@@ -30,7 +30,7 @@ const SessionColumn = ({
 			</div>
 			<input
 				className="input"
-				type="text"
+				type="number"
 				placeholder="weight (kg)"
 				onChange={(e) => setSessionWeight(e.target.value, seshIdx)}
 				value={exerciseM.sessions[seshIdx].weight}
@@ -45,7 +45,7 @@ const SessionColumn = ({
 							? "input input-r-bottom-right"
 							: "input"
 					}
-					type="text"
+					type="number"
 					placeholder="reps"
 					onChange={(e) => setReps(e.target.value, seshIdx, setIdx)}
 					key={setIdx}

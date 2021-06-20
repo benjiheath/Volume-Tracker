@@ -1,7 +1,8 @@
 import ExerciseData from "./ExerciseData/ExerciseData";
 import ExerciseStats from "./ExerciseStats/ExerciseStats";
 import Button from "./Button";
-import Chart from "react-google-charts";
+// import Chart from "react-google-charts";
+import { Chart, Interval, Line, Tooltip, Point, Legend, multiLineData } from "bizcharts";
 
 import { useState } from "react";
 
@@ -24,6 +25,21 @@ const ExerciseCard = ({ exercises, setExercises, exerciseM, idx }) => {
 	const deleteExercise = () => {
 		const copy = exercises.filter((ex) => ex !== exerciseM);
 		setExercises(copy);
+	};
+
+	const data = [
+		{ session: "1", totVol: 38 },
+		{ session: "2", totVol: 52 },
+	];
+
+	const daaa = exerciseM.sessions.map((sesh, idx) => {
+		return { session: `${idx + 1}`, totVol: sesh.totalVolume };
+	});
+
+	const scale = {
+		totalVol: {
+			min: 0,
+		},
 	};
 
 	return (
@@ -58,6 +74,18 @@ const ExerciseCard = ({ exercises, setExercises, exerciseM, idx }) => {
 				text="delete"
 				onClick={deleteExercise}
 			/>
+			<div className="chart-container">
+				<Chart
+					height={150}
+					autoFit
+					data={daaa}
+					interactions={["active-region"]}
+					padding={[30, 30, 30, 50]}
+				>
+					<Interval position="session*totVol" />
+					<Tooltip shared />
+				</Chart>
+			</div>
 		</div>
 	);
 };

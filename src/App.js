@@ -40,17 +40,23 @@ function App() {
 	};
 
 	// TODO - graph data
-	// const [graphVols, setGraphVols] = useState([[], []]);
-	// const [graphData, setGraphData] = useState([]);
-	// const [updateGraph, setUpdateGraph] = useState(false);
+	const [graphVols, setGraphVols] = useState([]);
+	const [graphData, setGraphData] = useState([]);
+	const [updateGraph, setUpdateGraph] = useState(false);
 
 	// useEffect(() => {
-	// 	let arr = [[], []];
+	// 	const kok = new Array(Math.max(...exercises.map((ex) => ex.sessions.length)));
 
 	// 	const getVolsForMap = () => {
 	// 		exercises.forEach((ex, idx) => {
 	// 			ex.sessions.forEach((sesh, i) => {
-	// 				arr[i].push(sesh.totalVolume);
+	// 				// if (!arr[i]) {
+	// 				// 	arr[i] = [];
+	// 				// }
+
+	// 				sesh?.totalVolume > 0
+	// 					? arr[i].push(sesh.totalVolume)
+	// 					: arr[i].push(0);
 	// 			});
 	// 		});
 	// 		setGraphVols(arr);
@@ -64,7 +70,7 @@ function App() {
 	// 	};
 
 	// 	getVolsForMap();
-	// }, [updateGraph]);
+	// }, [exercises]);
 
 	// const [showGraph, setShowGraph] = useState(false);
 
@@ -88,41 +94,6 @@ function App() {
 						/>
 					))}
 			</div>
-
-			{/* {showGraph && ( //TODO
-				<div className="chartContainer">
-					<Chart
-						width={"600px"}
-						style={{ backgroundColor: "transparent" }}
-						height={"400px"}
-						chartType="LineChart"
-						loader={<div>Loading Chart</div>}
-						data={[
-							[
-								"x",
-								...exercises.map(
-									(ex) => ex.name
-								),
-							],
-							[0, 0, 0],
-							...graphData,
-						]}
-						options={{
-							hAxis: {
-								title: "Volume",
-							},
-							vAxis: {
-								title: "Sessions",
-							},
-							series: {
-								1: { curveType: "function" },
-							},
-						}}
-						rootProps={{ "data-testid": "2" }}
-					/>
-				</div>
-			)}
-			<Button text="update" onClick={showGraphFn} /> */}
 		</div>
 	);
 }
@@ -136,3 +107,13 @@ export default App;
 //   [0, 0, 0],
 //   ...graphData,
 // ]}
+
+/* [
+							[
+								"x",
+								...exercises.map(
+									(ex) => ex.name
+								),
+							],
+							...graphData,
+						] */
