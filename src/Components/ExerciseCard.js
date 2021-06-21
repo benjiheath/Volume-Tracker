@@ -27,20 +27,9 @@ const ExerciseCard = ({ exercises, setExercises, exerciseM, idx }) => {
 		setExercises(copy);
 	};
 
-	const data = [
-		{ session: "1", totVol: 38 },
-		{ session: "2", totVol: 52 },
-	];
-
-	const daaa = exerciseM.sessions.map((sesh, idx) => {
+	const data = exerciseM.sessions.map((sesh, idx) => {
 		return { session: `${idx + 1}`, totVol: sesh.totalVolume };
 	});
-
-	const scale = {
-		totalVol: {
-			min: 0,
-		},
-	};
 
 	return (
 		<div className="exercise-card">
@@ -74,18 +63,20 @@ const ExerciseCard = ({ exercises, setExercises, exerciseM, idx }) => {
 				text="delete"
 				onClick={deleteExercise}
 			/>
-			<div className="chart-container">
-				<Chart
-					height={150}
-					autoFit
-					data={daaa}
-					interactions={["active-region"]}
-					padding={[30, 30, 30, 50]}
-				>
-					<Interval position="session*totVol" />
-					<Tooltip shared />
-				</Chart>
-			</div>
+			{exerciseM.sessions[0].totalVolume > 0 && (
+				<div className="chart-container">
+					<Chart
+						height={150}
+						autoFit
+						data={data}
+						interactions={["active-region"]}
+						padding={[30, 30, 30, 50]}
+					>
+						<Interval position="session*totVol" />
+						<Tooltip shared />
+					</Chart>
+				</div>
+			)}
 		</div>
 	);
 };
