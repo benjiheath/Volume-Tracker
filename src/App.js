@@ -1,15 +1,11 @@
 import Header from "./Components/Header";
 import ExerciseCard from "./Components/ExerciseCard";
-import Chart from "react-google-charts";
-import Button from "./Components/Button";
 
 import { useState, useEffect } from "react";
 
 function App() {
 	const newExerciseTemplate = { id: 0, sessions: [{ reps: [0, 0, 0] }], numSets: [0, 0, 0] };
-	const [exercises, setExercises] = useState([
-		{ id: 0, sessions: [{ reps: [0, 0, 0] }], numSets: [0, 0, 0] },
-	]);
+	const [exercises, setExercises] = useState([newExerciseTemplate]);
 
 	// display local storage on page load
 	const data = JSON.parse(localStorage.getItem("exercises"));
@@ -39,46 +35,6 @@ function App() {
 		showFirstAdd && setExercises([...exercises, newExerciseTemplate]);
 	};
 
-	// TODO - graph data
-	const [graphVols, setGraphVols] = useState([]);
-	const [graphData, setGraphData] = useState([]);
-	const [updateGraph, setUpdateGraph] = useState(false);
-
-	// useEffect(() => {
-	// 	const kok = new Array(Math.max(...exercises.map((ex) => ex.sessions.length)));
-
-	// 	const getVolsForMap = () => {
-	// 		exercises.forEach((ex, idx) => {
-	// 			ex.sessions.forEach((sesh, i) => {
-	// 				// if (!arr[i]) {
-	// 				// 	arr[i] = [];
-	// 				// }
-
-	// 				sesh?.totalVolume > 0
-	// 					? arr[i].push(sesh.totalVolume)
-	// 					: arr[i].push(0);
-	// 			});
-	// 		});
-	// 		setGraphVols(arr);
-	// 		console.log(graphVols);
-
-	// 		const dataa = graphVols.map((vols, idx) => {
-	// 			return [idx + 1, ...vols];
-	// 		});
-	// 		setGraphData(dataa);
-	// 		console.log(graphData);
-	// 	};
-
-	// 	getVolsForMap();
-	// }, [exercises]);
-
-	// const [showGraph, setShowGraph] = useState(false);
-
-	// const showGraphFn = () => {
-	// 	setUpdateGraph(!updateGraph);
-	// 	setShowGraph(true);
-	// };
-
 	return (
 		<div className="App">
 			<Header addExercise={addExercise} setShowFirstAdd={setShowFirstAdd} />
@@ -99,21 +55,109 @@ function App() {
 }
 
 export default App;
+/* 
+ 
+ 
+ 
+ 
 
-// ["x", ...exercises.map((ex) => ex.name)],
 
-//  data={[
-//   ["x", ...exercises.map((ex) => ex.name)],
-//   [0, 0, 0],
-//   ...graphData,
-// ]}
 
-/* [
-							[
-								"x",
-								...exercises.map(
-									(ex) => ex.name
-								),
-							],
-							...graphData,
-						] */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+*/
+// TODO - multiline graph
+// const [graphVols, setGraphVols] = useState([]);
+// const [graphData, setGraphData] = useState([]);
+// const [updateGraph, setUpdateGraph] = useState(false);
+
+// useEffect(() => {
+// 	const kok = new Array(Math.max(...exercises.map((ex) => ex.sessions.length)));
+
+// 	const getVolsForMap = () => {
+// 		exercises.forEach((ex, idx) => {
+// 			ex.sessions.forEach((sesh, i) => {
+
+// 				sesh?.totalVolume > 0
+// 					? arr[i].push(sesh.totalVolume)
+// 					: arr[i].push(0);
+// 			});
+// 		});
+// 		setGraphVols(arr);
+// 		console.log(graphVols);
+
+// 		const dataa = graphVols.map((vols, idx) => {
+// 			return [idx + 1, ...vols];
+// 		});
+// 		setGraphData(dataa);
+// 		console.log(graphData);
+// 	};
+
+// 	getVolsForMap();
+// }, [exercises]);
+
+// const [showGraph, setShowGraph] = useState(false);
+
+// const showGraphFn = () => {
+// 	setUpdateGraph(!updateGraph);
+// 	setShowGraph(true);
+// };

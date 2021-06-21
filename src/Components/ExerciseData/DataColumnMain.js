@@ -2,7 +2,13 @@ import Button from "../Button";
 
 const ColumnMain = ({ setExerciseName, exerciseM, addNewSet, idx, deleteSet }) => {
 	return (
-		<div className="column">
+		<div
+			className={
+				exerciseM.numSets.length <= 3
+					? "column"
+					: `column-${exerciseM.numSets.length}`
+			}
+		>
 			<div className="col col-r-top-left">{`Exercise ${idx + 1}`}</div>
 			<input
 				className="input"

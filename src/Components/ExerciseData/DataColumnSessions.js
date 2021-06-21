@@ -10,7 +10,13 @@ const SessionColumn = ({
 	newSessionAdded,
 }) => {
 	return (
-		<div className="column">
+		<div
+			className={
+				exerciseM.numSets.length <= 3
+					? "column"
+					: `column-${exerciseM.numSets.length}`
+			}
+		>
 			<div
 				className={
 					// if last session & not first session, include delete button
@@ -49,7 +55,13 @@ const SessionColumn = ({
 					placeholder="reps"
 					onChange={(e) => setReps(e.target.value, seshIdx, setIdx)}
 					key={setIdx}
-					value={exerciseM.sessions[seshIdx].reps[setIdx]}
+					value={
+						exerciseM.sessions[seshIdx].reps[setIdx] === 0
+							? ""
+							: exerciseM.sessions[seshIdx].reps[
+									setIdx
+							  ]
+					}
 				></input>
 			))}
 		</div>

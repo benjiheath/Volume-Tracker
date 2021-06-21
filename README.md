@@ -20,23 +20,13 @@ Total volume comparisons (absolute and percentage) are made for all sessions aft
 
 <h3>**todo**</h3>
 
-- include simple instructions at top of page
-
-- input annotation?
-
-- Fix graph hover interactions
-
-- Change bar chart to single line graph?
-
 - Allow user to use different weights for each set
 
 - implement search/select for exercise name input
 
 - Improve layout when there are >2-3 exercises
 
-- add grid adjustment for exercises with >5 sets
-
-- add responsiveness
+- reconfigure layout for mobile devices
 
 - focus weight input field when user adds new session
 

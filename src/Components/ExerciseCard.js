@@ -1,8 +1,8 @@
 import ExerciseData from "./ExerciseData/ExerciseData";
 import ExerciseStats from "./ExerciseStats/ExerciseStats";
 import Button from "./Button";
-// import Chart from "react-google-charts";
-import { Chart, Interval, Line, Tooltip, Point, Legend, multiLineData } from "bizcharts";
+import { Chart, Interval, Line, Tooltip, Point, Legend, multiLineData, DensityHeatmapChart } from "bizcharts";
+// import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from "recharts";
 
 import { useState } from "react";
 
@@ -30,6 +30,14 @@ const ExerciseCard = ({ exercises, setExercises, exerciseM, idx }) => {
 	const data = exerciseM.sessions.map((sesh, idx) => {
 		return { session: `${idx + 1}`, totVol: sesh.totalVolume };
 	});
+
+	const data2 = exerciseM.sessions.map((sesh, idx) => {
+		return { session: `session ${idx + 1}`, totalVolume: sesh.totalVolume };
+	});
+
+	console.log(data2);
+
+	console.log(Line);
 
 	return (
 		<div className="exercise-card">
@@ -63,17 +71,30 @@ const ExerciseCard = ({ exercises, setExercises, exerciseM, idx }) => {
 				text="delete"
 				onClick={deleteExercise}
 			/>
-			{exerciseM.sessions[0].totalVolume > 0 && (
+			{exerciseM.sessions.length > 1 && (
 				<div className="chart-container">
 					<Chart
-						height={150}
+						scale={{ value: { min: 0 } }}
+						padding={[10, 20, 50, 40]}
 						autoFit
-						data={data}
-						interactions={["active-region"]}
-						padding={[30, 30, 30, 50]}
+						height={160}
+						data={data2}
 					>
-						<Interval position="session*totVol" />
-						<Tooltip shared />
+						<Line
+							shape=""
+							position="session*totalVolume"
+							color="l (270) 0:rgba(0, 255, 149, 1) .5:rgba(0, 255, 149, 1) 1:rgba(0, 255, 149, 1)"
+							style={{
+								stroke: "#00ff95",
+								shadowColor: "#00ff95",
+								shadowBlur: "20",
+							}}
+						/>
+						<Tooltip
+							hideMarkers={true}
+							follow={false}
+							style={{ opacity: 0 }}
+						/>
 					</Chart>
 				</div>
 			)}
